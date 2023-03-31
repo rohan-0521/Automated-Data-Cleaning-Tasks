@@ -1,0 +1,13 @@
+import pandas as pd
+
+# Read the Excel file
+df = pd.read_excel(r'filepath of interest.xlsx')
+
+# Convert the "Date" column to datetime format
+df['Date'] = pd.to_datetime(df['Date'], format='%d-%m-%Y')
+
+# Sort the data by date in ascending order
+sorted_df = df.sort_values(by=['Date'], ascending=True)
+
+# Save the sorted data to a new Excel file
+sorted_df.to_excel(r'filepath of interest.xlsx', index=False)
