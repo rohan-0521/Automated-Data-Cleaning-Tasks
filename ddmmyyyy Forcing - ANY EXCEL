@@ -1,0 +1,17 @@
+import pandas as pd
+
+# read the excel file from the specified filepath
+filepath = r"filepathofinterest.xlsx"
+df = pd.read_excel(filepath)
+
+# convert Date column to datetime object
+df['Date'] = pd.to_datetime(df['Date'])
+
+# convert date format from yyyy-mm-dd to dd-mm-yyyy
+df['Date'] = df['Date'].dt.strftime('%d-%m-%Y')
+
+# save the modified dataframe to the same file
+with pd.ExcelWriter(r'filepathofinterest.xlsx') as writer:
+    df.to_excel(writer, index=False)
+
+# Regardless of format at download - forces date into dd-mm-yyy format.
