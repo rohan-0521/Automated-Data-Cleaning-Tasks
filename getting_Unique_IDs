@@ -1,0 +1,15 @@
+import pandas as pd
+
+# Load the Excel sheet into a pandas dataframe
+df = pd.read_excel(r'filepath of interest.xlsx')
+
+# Extract the values in the Whatyouwant_ID column as a list
+sp_entity_id_list = df['Whatyouwant_ID'].tolist()
+
+# Join the values in the list with a space in between them using the join() method
+sp_entity_id_str = ' '.join(str(e) for e in sp_entity_id_list)
+
+# Print the resulting string
+print(sp_entity_id_str)
+
+#This code joins the values in the Unique ID column with a space. Useful for pasting into other database searches such as S&P Capital IQ/Datastream etc.
